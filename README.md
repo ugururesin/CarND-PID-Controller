@@ -7,6 +7,7 @@ A proportional–integral–derivative controller (**PID controller** or three-t
 The distinguishing feature of the PID controller is the ability to use the three control terms of proportional, integral and derivative influence on the controller output to apply accurate and optimal control.
 
 ![](img/PID.png)  
+---
 
 ### Proportional (P) Control  
 Let's say ego car moves with a constant velocity and our reference trajectory would be the x-axis. Thus, the y-axis will represent the distance between the ego car and the reference trajectory line. Let's call this Cross-Track-Error (CTE in short).  
