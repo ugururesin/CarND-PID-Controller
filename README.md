@@ -6,8 +6,24 @@ Self-Driving Car Engineer Nanodegree Program
 A proportional–integral–derivative controller (**PID controller** or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively), hence the name.  
 The distinguishing feature of the PID controller is the ability to use the three control terms of proportional, integral and derivative influence on the controller output to apply accurate and optimal control.
 
-![](img/PID.png)
+![](img/PID.png)  
 
+### Proportional (P) Control
+Let's say ego car moves with a constant velocity and our reference trajectory would be the x-axis. Thus, the y-axis will represent the distance between the ego car and the reference trajectory line. Let's call this Cross-Track-Error (CTE in short).  
+So, how do we set the steering angle?  
+In proportional control, **steering_angle = -t * CTE**  (t is a factor)
+The problem with the proportional control is that the ego car overshoots!  
+
+### Proportional-Derivative (PD) Control  
+To avoid overshooting problem coming with the proportional control, derivative (D) term is added. As ego car moves with the initial steering angle, the CTE would decrease for a period of time. However, the steering angle is also needed to be decreased as well.  
+In proportional-derivative control, **steering_angle = -tp * CTE - td * (d/dt)CTE**  
+If there is a systematic bias (e.g. a misalignment between front-wheel angles mechanically), the PD controller can not handle this.
+
+### Proportional-Integral-Derivative (PID) Control  
+To overcome the overshooting problem and the systematic bias, proportional–integral–derivative controller is used.  
+An example plot is provided below to compare p, pi and pid controllers.
+
+![](img/PID_plot.png)  
 
 ## Dependencies
 
