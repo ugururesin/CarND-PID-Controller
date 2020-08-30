@@ -11,12 +11,16 @@ The distinguishing feature of the PID controller is the ability to use the three
 ### Proportional (P) Control  
 Let's say ego car moves with a constant velocity and our reference trajectory would be the x-axis. Thus, the y-axis will represent the distance between the ego car and the reference trajectory line. Let's call this Cross-Track-Error (CTE in short).  
 So, how do we set the steering angle?  
-In proportional control, **steering_angle = -t * CTE**  (t is a factor)
+
+In proportional control, **steering_angle = -t * CTE**  (t is a factor)  
+
 The problem with the proportional control is that the ego car overshoots!  
 
 ### Proportional-Derivative (PD) Control  
 To avoid overshooting problem coming with the proportional control, derivative (D) term is added. As ego car moves with the initial steering angle, the CTE would decrease for a period of time. However, the steering angle is also needed to be decreased as well.  
+
 In proportional-derivative control, **steering_angle = -tp * CTE - td * (d/dt)CTE**  
+
 If there is a systematic bias (e.g. a misalignment between front-wheel angles mechanically), the PD controller can not handle this.
 
 ### Proportional-Integral-Derivative (PID) Control  
