@@ -2,6 +2,12 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Introduction  
+A proportional–integral–derivative controller (**PID controller** or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively), hence the name.  
+The distinguishing feature of the PID controller is the ability to use the three control terms of proportional, integral and derivative influence on the controller output to apply accurate and optimal control.
+
+![](img/PID.png)
+
 
 ## Dependencies
 
@@ -93,6 +99,9 @@ that's just a guess.
 One last note here: regardless of the IDE used, every submitted project must
 still be compilable with cmake and make./
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+### References  
+Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
+https://en.wikipedia.org/wiki/PID_controller
+
+
 
