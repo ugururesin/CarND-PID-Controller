@@ -1,6 +1,6 @@
 # CarND-PID-Controller
 Self-Driving Car Engineer Nanodegree Program
-
+---
 ## Introduction  
 A proportional–integral–derivative controller (**PID controller** or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively), hence the name.  
 The distinguishing feature of the PID controller is the ability to use the three control terms of proportional, integral and derivative influence on the controller output to apply accurate and optimal control.
@@ -27,7 +27,7 @@ To overcome the overshooting problem and the systematic bias, proportional–int
 An example plot is provided below to compare p, pi and pid controllers.
 
 ![](img/PID_plot.png)  
-
+---
 ## Dependencies
 
 * cmake >= 3.5
@@ -59,7 +59,7 @@ An example plot is provided below to compare p, pi and pid controllers.
 4. Run it: `./pid`. 
 
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
-
+---
 ## Project Instructions and Rubric
 
 Note: regardless of the changes you make, your project must be buildable using
@@ -76,6 +76,31 @@ The code can compile.
 **Implementation**  
 Here, heuristic approach (trial-and-error) is used so as to observe the outcome of the different parameters.  
 
+First, **PID.cpp** file is modified to initialize PID coefficients.  
+Also counters added to calculate average error.
+
+In **main.cpp** file, the main function is modified so as to send PID parameters into it.
+<pre><code>
+int main(int argc, char *argv[])
+{
+  uWS::Hub h;
+  
+  //INITILIZE PID VARIABLES
+  PID pid;
+  double init_Kp = atof(argv[1]); //the proportional term deals with how far the car is from the reference
+  double init_Ki = atof(argv[2]); //the integral term deals with the systematic bias (like misalignment of wheels)
+  double init_Kd = atof(argv[3]); //the derivative term is to prevent hard oscillation around the reference
+  pid.Init(init_Kp, init_Ki, init_Kd);
+  ...
+</pre></code>
+  
+Then, steering value is calculated based on PID controller.  
+<pre><code>
+// STEERING VALUE ERROR by CTE
+pid.UpdateError(cte);
+steer_value -= pid.TotalError(); 
+</pre></code>
+
 **Reflection**  
 In this study, heuristic approach is used so as to observe the effects of the pid parameters.  
 
@@ -89,11 +114,16 @@ See the full video: [./videos/p_only.mov](./videos/p_only.mov).
 2. **PD-controller** is tried with following p-i-d parameters: 0.15-0.0-2.5  
 This prevents the oscillation.    
 
-See the full video: [./videos/p_only.mov](./videos/p_only.mov).  
+See the full video: [./videos/pd_ideal.mov](./videos/pd_ideal.mov).  
 
 3. **PID-controller** is tried with some p-i-d parameters.
 Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for small integral values.  
 However, higher integral values cause that steering angles began to change very rapidly, causing the vehicle to lose control.
+
+See the full video: [./videos/pid_high_integral.mov](./videos/pid_high_integral.mov).  
+
+Thus, a lower integral value is set for the pid controller.  
+See the full video: [./videos/pid_ideal.mov](./videos/pid_ideal.mov).  
 
 
 **Simulation**  
@@ -101,8 +131,11 @@ No tire may leave the drivable portion of the track surface. The car may not pop
 
 The simulation for the ideal pid controller (parameters = 0.15, 0.001, 2.5) is shown below:  
 
-![](img/sim_full.gif)    
+![](img/sim_full.gif)  
+(6 times accelerated!)
 
+See the full video: [./videos/pid_ideal.mov](./videos/pid_ideal.mov).  
+---
 ### Future Improvements  
 In this study, 2 improvements can be done as described below.  
 
