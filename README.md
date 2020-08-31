@@ -76,16 +76,17 @@ for instructions and the project rubric.
 The code should compile.  
 
 #### Implementation  
+It's encouraged to be creative, particularly around hyperparameter tuning/optimization. However, the base algorithm should follow what's presented in the lessons.  
 
 #### Reflection  
-Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?
+Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?  
 
-Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.
+Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.  
 
-Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!
+Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
 
 #### Simulation  
-No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).
+No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
 
 ### References  
 Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
