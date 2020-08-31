@@ -135,7 +135,8 @@ The simulation for the ideal pid controller (parameters = 0.15, 0.001, 2.5) is s
 ![](img/sim_full.gif)  
 (6 times faster!)
 
-See the full video: [./videos/pid_ideal.mov](./videos/pid_ideal.mov).  
+See the full video: [./videos/pid_ideal.mov](./videos/pid_ideal.mov)  
+
 ---
 ### Future Improvements  
 In this study, 2 improvements can be done as described below.  
