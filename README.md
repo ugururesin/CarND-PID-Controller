@@ -77,8 +77,13 @@ The code can compile.
 It's encouraged to be creative, particularly around hyperparameter tuning/optimization.  
 However, the base algorithm should follow what's presented in the lessons.  
 
+Here, heuristic approach is used so as to observe the outcome of the different parameters.  
+
 **Reflection**  
-Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?  
+In this study, heuristic approach is used so as to observe the effects of the pid parameters.  
+First, only P-controller is tried with following p-i-d parameters: 0.15-0.0-0.0  
+The ego car oscillates a lot and then 
+
 
 Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.  
 
@@ -87,7 +92,27 @@ Student discusses how they chose the final hyperparameters (P, I, D coefficients
 **Simulation**  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
 
+The simulation for the ideal pid controller (parameters = 0.15, 0.001, 2.5) is shown below:  
+
 ![](img/sim_full.gif)    
+
+### Future Improvements  
+In this study, 2 improvements can be done as described below.  
+
+1. The vehicle speed was increased to 50 mph to see the controller's steering performance at a higher speed.  
+'''
+std::endl;
+          json msgJson;
+          msgJson["steering_angle"] = steer_value;
+          msgJson["throttle"] = 0.5;
+'''  
+As a result, even if the vehicle did not leave the road completely, oscillation increased too much and some wheels slipped out of the outer lane.  
+![](img/off1.png) ![](img/off2.png)   
+This can be improved by adding a 2nd PID controller for "throttle" as well.  
+
+2. Instead of a heuristic approach, twiddle can be used to reach the optimum pid parameters. However, in this study, heuristic approach is choosen so as to demonstrate the effects of the different parameters.  
+
+Enthusiasts can get better results by trying these two suggestions.  
 
 ### References  
 Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
