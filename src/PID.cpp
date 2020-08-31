@@ -1,231 +1,64 @@
 #include "PID.h"
-
-/**
- * TODO: Complete the PID class. You may add any additional desired functions.
- */
+#include <algorithm>
+/*
+* TODO: Complete the PID class.
+*/
 
 PID::PID() {}
 
 PID::~PID() {}
 
-void PID::Init(double Kp_, double Ki_, double Kd_) {
-
-  /**
-   * TODO: Initialize PID coefficients (and errors, if needed)
-   */
-  /*Initializing parameters
-  Since instance names and input names are identical for parameters
-  "this->" operator is used */
+//Initialize PID coefficients (and errors, if needed)
+void PID::Init(double Kp, double Ki, double Kd) {
   this->Kp = Kp;
   this->Ki = Ki;
   this->Kd = Kd;
-  is_cte_initialized = false;
-  
-  // initialize cte values and number of iterations
-  int_cte = 0;
-  prev_cte = 0;
-  curr_cte = 0;
-  n = 0;
 
-  // initialize coefficient error values
-  p_error = 0.01;
-  i_error = 0.001;
-  d_error = 0.2;
+  p_error = 0.0;
+  i_error = 0.0;
+  d_error = 0.0;
 
-  // initialize tuning flag, state, and current coefficient
-  is_tuned = false;
-  state = 0;
-  coeff = 0;
+  //Previous CTE (for derivative)
+  prev_cte = 0.0;
 
-  // initialize error variables
-  best_error = 0;
-  curr_error = 0;
+  //Initialize counters
+  counter = 0;
+  errorSum = 0.0;
+  minError = std::numeric_limits<double>::max();
+  maxError = std::numeric_limits<double>::min();
 }
 
-/*
- * PID initialize cte values
- */
-void PID::InitCTE(double cte){
+void PID::UpdateError(double cte) {
 
-  // initialize PID cte values
-  int_cte = cte;
+  p_error = cte;			//proportional error (CTE)
+  i_error += cte;			//integral error (sum of CTEs)
+  d_error = cte - prev_cte;	//diferential error (current-previous CTE)
   prev_cte = cte;
-  curr_cte = cte;
-  is_cte_initialized = true;
+
+  errorSum += cte;
+  
+  counter++;
+  if ( cte > maxError ) {
+    maxError = cte;
+  }
+  if ( cte < minError ) {
+    minError = cte;
+  }
 }
 
-/*
- * PID Update Coefficient Error using Twiddle Algorithm
- */
-void PID::UpdateError(double cte, uWS::WebSocket<uWS::SERVER> ws) {
-
-  // use a finite state machine to build twiddle
-  
-  // check state
-  switch(state){
-    
-  // state 0: get initial best error
-  case 0:
-    if( n < ITERATIONS ){
-      best_error += cte*cte;
-      n++;
-      std::cout << " n = " << n << std::endl;
-      std::cout << "State = " << state << std::endl;
-    }
-    else{
-      // get mean error
-      best_error /= ITERATIONS;
-      
-      // move to next state
-  state = 1;
-    }
-    break;
-
-  // state 1: update coefficient and restart
-  case 1:
-    switch(coeff){
-    case 0:
-      Kp += p_error;
-      break;
-    case 1:
-      Ki += i_error;
-      break;
-    case 2:
-      Kd += d_error;
-      break;
-    }
-    // move to next state
-    state = 2;
-    // restart simulator
-    Restart(ws);
-    break;
-      
-  // state 2: get new error
-  case 2:
-    if( n < ITERATIONS ){
-      curr_error += cte*cte;
-      n++;
-    }
-    else if((curr_error/ITERATIONS) < best_error){
-      // update best error
-      best_error = curr_error/ITERATIONS;
-      
-      // update coefficient error
-      switch(coeff){
-      case 0:
-  p_error *= 1.1;
-  break;
-      case 1:
-  i_error *= 1.1;
-  break;
-      case 2:
-  d_error *= 1.1;
-  break;
-      }
-      
-      // move to next coefficient
-      state = 1;
-      coeff = (coeff + 1)%NUM_COEFF;
-    }
-    else{
-      switch(coeff){
-      case 0:
-  Kp -= 2*p_error;
-  break;
-      case 1:
-  Ki -= 2*i_error;
-  break;
-      case 2:
-  Kd -= 2*d_error;
-  break;
-      }
-      // move to next state
-      state = 3;
-      Restart(ws);
-    }
-    break;
-
-  //state 3: get error
-  case 3:
-    if( n < ITERATIONS ){
-      curr_error += cte*cte;
-      n++;
-    }
-    else if((curr_error/ITERATIONS) < best_error){
-      // update best error
-      best_error = curr_error/ITERATIONS;
-      
-      // update coefficient error
-      switch(coeff){
-      case 0:
-  p_error *= 1.1;
-  break;
-      case 1:
-  i_error *= 1.1;
-  break;
-      case 2:
-  d_error *= 1.1;
-  break;
-      }
-      
-      // move to next coefficient
-      state = 1;
-      coeff = (coeff + 1)%NUM_COEFF;
-    }
-    else{
-      switch(coeff){
-      case 0:
-  Kp += p_error;
-  p_error *= 0.9;
-  break;
-      case 1:
-  Ki += i_error;
-  i_error *= 0.9;
-  break;
-      case 2:
-  Kd += d_error;
-  d_error *= 0.9;
-  break;
-      }
-
-      // move to next iteration
-      state = 1;
-      coeff = (coeff + 1)%NUM_COEFF;
-    }
-    break;
-  }
-  
-  // check if tolerance achieved
-  if(TotalError() <= TOLERANCE && coeff == 2){
-    is_tuned = true;
-  }
-
-  
-}
-
-/*
- * PID Total Error Calculation
- */
 double PID::TotalError() {
-
-  // return sum of coefficient error values
-  return p_error + i_error + d_error;
+  double total_error = p_error * Kp + i_error * Ki + d_error * Kd; //pid equation
+  return total_error;
 }
 
+double PID::AverageError() {
+  return errorSum/counter;
+}
 
-/*
- * PID Reset and Restart the simulator
- */
-void PID::Restart(uWS::WebSocket<uWS::SERVER> ws){
+double PID::MinError() {
+  return minError;
+}
 
-  // reset variables
-  n = 0;
-  int_cte = 0;
-  prev_cte = 0;
-  curr_cte = 0;
-  curr_error = 0;
-
-  // restart the simulator
-  std::string reset_msg = "42[\"reset\",{}]";
-  ws.send(reset_msg.data(), reset_msg.length(), uWS::OpCode::TEXT);
+double PID::MaxError() {
+  return maxError;
 }
