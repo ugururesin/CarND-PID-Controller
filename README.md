@@ -1,7 +1,7 @@
 # CarND-PID-Controller
 Self-Driving Car Engineer Nanodegree Program
 
-**## Introduction  
+## Introduction  
 A proportional–integral–derivative controller (**PID controller** or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively), hence the name.  
 The distinguishing feature of the PID controller is the ability to use the three control terms of proportional, integral and derivative influence on the controller output to apply accurate and optimal control.
 
@@ -49,9 +49,7 @@ An example plot is provided below to compare p, pi and pid controllers.
     git checkout e94b6e1
     ```
     Some function signatures have changed in v0.14.x. See [this PR](https://github.com/udacity/CarND-MPC-Project/pull/3) for more details.
-* Simulator. You can download these from the [project intro page](https://github.com/udacity/self-driving-car-sim/releases) in the classroom.
-
-Fellow students have put together a guide to Windows set-up for the project [here](https://s3-us-west-1.amazonaws.com/udacity-selfdrivingcar/files/Kidnapped_Vehicle_Windows_Setup.pdf) if the environment you have set up for the Sensor Fusion projects does not work for this project. There's also an experimental patch for windows in this [PR](https://github.com/udacity/CarND-PID-Control-Project/pull/3).
+* Simulator. You can download these from the [project intro page](https://github.com/udacity/self-driving-car-sim/releases) in the classroom.  
 
 ## Basic Build Instructions
 
@@ -75,7 +73,6 @@ for instructions and the project rubric.
 The code can compile.  
 ![](img/compile.png)    
 
-
 **Implementation**  
 It's encouraged to be creative, particularly around hyperparameter tuning/optimization.  
 However, the base algorithm should follow what's presented in the lessons.  
@@ -86,9 +83,6 @@ Student describes the effect of the P, I, D component of the PID algorithm in th
 Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.  
 
 Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
-
-***Without random hyperparameters:***
-![](img/sim_offtrack.gif)  
 
 **Simulation**  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
