@@ -81,11 +81,23 @@ Here, heuristic approach is used so as to observe the outcome of the different p
 
 **Reflection**  
 In this study, heuristic approach is used so as to observe the effects of the pid parameters.  
-First, only P-controller is tried with following p-i-d parameters: 0.15-0.0-0.0  
-The ego car oscillates a lot and then 
 
+1. **P-controller** is tried with following p-i-d parameters: 0.15-0.0-0.0  
+The ego vehicle oscillated quite a lot with this controller and then went off the road.  
 
-Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.  
+![](img/p_only_off.png)  
+
+See the full video: [./videos/p_only.mov](./videos/p_only.mov).  
+
+2. **PD-controller** is tried with following p-i-d parameters: 0.15-0.0-2.5  
+This prevents the oscillation.    
+
+See the full video: [./videos/p_only.mov](./videos/p_only.mov).  
+
+3. **PID-controller** is tried with following p-i-d parameters: 0.15-0.001-2.5  
+Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for the given parameters here.  
+
+However,   
 
 Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
 
