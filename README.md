@@ -87,10 +87,13 @@ Visual aids are encouraged, i.e. record of a small video of the car in the simul
 
 Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
 
+***Without random hyperparameters:***
+![](img/sim_offtrack.gif)  
+
 **Simulation**  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
 
-![](img/simulation.gif)    
+![](img/sim_full.gif)    
 
 ### References  
 Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
