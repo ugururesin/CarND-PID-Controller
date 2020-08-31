@@ -74,10 +74,7 @@ The code can compile.
 ![](img/compile.png)    
 
 **Implementation**  
-It's encouraged to be creative, particularly around hyperparameter tuning/optimization.  
-However, the base algorithm should follow what's presented in the lessons.  
-
-Here, heuristic approach is used so as to observe the outcome of the different parameters.  
+Here, heuristic approach (trial-and-error) is used so as to observe the outcome of the different parameters.  
 
 **Reflection**  
 In this study, heuristic approach is used so as to observe the effects of the pid parameters.  
@@ -94,10 +91,9 @@ This prevents the oscillation.
 
 See the full video: [./videos/p_only.mov](./videos/p_only.mov).  
 
-3. **PID-controller** is tried with following p-i-d parameters: 0.15-0.001-2.5  
-Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for the given parameters here.  
-
-However,   
+3. **PID-controller** is tried with some p-i-d parameters.
+Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for small integral values.  
+However, higher integral values cause that steering angles began to change very rapidly, causing the vehicle to lose control.
 
 Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
 
