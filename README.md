@@ -95,7 +95,6 @@ See the full video: [./videos/p_only.mov](./videos/p_only.mov).
 Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for small integral values.  
 However, higher integral values cause that steering angles began to change very rapidly, causing the vehicle to lose control.
 
-Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
 
 **Simulation**  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
@@ -108,12 +107,12 @@ The simulation for the ideal pid controller (parameters = 0.15, 0.001, 2.5) is s
 In this study, 2 improvements can be done as described below.  
 
 1. The vehicle speed was increased to 50 mph to see the controller's steering performance at a higher speed.  
-'''
+<pre><code>
 std::endl;
           json msgJson;
           msgJson["steering_angle"] = steer_value;
           msgJson["throttle"] = 0.5;
-'''  
+</code></pre> 
 As a result, even if the vehicle did not leave the road completely, oscillation increased too much and some wheels slipped out of the outer lane.  
 ![](img/off1.png) ![](img/off2.png)   
 This can be improved by adding a 2nd PID controller for "throttle" as well.  
