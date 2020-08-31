@@ -88,6 +88,7 @@ Student discusses how they chose the final hyperparameters (P, I, D coefficients
 #### Simulation  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
 
+
 ### References  
 Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
 https://en.wikipedia.org/wiki/PID_controller
