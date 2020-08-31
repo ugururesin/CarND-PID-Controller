@@ -58,7 +58,6 @@ An example plot is provided below to compare p, pi and pid controllers.
 3. Compile: `cmake .. && make`
 4. Run it: `./pid`. 
 
-Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 ---
 ## Project Instructions and Rubric
 
@@ -118,7 +117,9 @@ See the full video: [./videos/pd_ideal.mov](./videos/pd_ideal.mov).
 
 3. **PID-controller** is tried with some p-i-d parameters.
 Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for small integral values.  
-However, higher integral values cause that steering angles began to change very rapidly, causing the vehicle to lose control.
+However, **higher integral values** cause that steering angles began to change very rapidly, causing the vehicle to lose control!!!
+![](img/high_integral.gif)  
+(4 times faster!)
 
 See the full video: [./videos/pid_high_integral.mov](./videos/pid_high_integral.mov).  
 
@@ -132,7 +133,7 @@ No tire may leave the drivable portion of the track surface. The car may not pop
 The simulation for the ideal pid controller (parameters = 0.15, 0.001, 2.5) is shown below:  
 
 ![](img/sim_full.gif)  
-(6 times accelerated!)
+(6 times faster!)
 
 See the full video: [./videos/pid_ideal.mov](./videos/pid_ideal.mov).  
 ---
