@@ -72,10 +72,13 @@ of CarND. If you are enrolled, see [the project page](https://classroom.udacity.
 for instructions and the project rubric.
 
 **Compilation**  
-The code should compile.  
+The code can compile.  
+![](img/compile.png)    
+
 
 **Implementation**  
-It's encouraged to be creative, particularly around hyperparameter tuning/optimization. However, the base algorithm should follow what's presented in the lessons.  
+It's encouraged to be creative, particularly around hyperparameter tuning/optimization.  
+However, the base algorithm should follow what's presented in the lessons.  
 
 **Reflection**  
 Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?  
@@ -87,6 +90,7 @@ Student discusses how they chose the final hyperparameters (P, I, D coefficients
 **Simulation**  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
 
+![](img/simulation.gif)    
 
 ### References  
 Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
