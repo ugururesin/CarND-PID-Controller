@@ -1,8 +1,7 @@
 # CarND-PID-Controller
 Self-Driving Car Engineer Nanodegree Program
 
----
-## Introduction  
+**## Introduction  
 A proportional–integral–derivative controller (**PID controller** or three-term controller) is a control loop mechanism employing feedback that is widely used in industrial control systems and a variety of other applications requiring continuously modulated control. A PID controller continuously calculates an error value e(t) as the difference between a desired setpoint (SP) and a measured process variable (PV) and applies a correction based on proportional, integral, and derivative terms (denoted P, I, and D respectively), hence the name.  
 The distinguishing feature of the PID controller is the ability to use the three control terms of proportional, integral and derivative influence on the controller output to apply accurate and optimal control.
 
@@ -72,20 +71,20 @@ More information is only accessible by people who are already enrolled in Term 2
 of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/e8235395-22dd-4b87-88e0-d108c5e5bbf4/concepts/6a4d8d42-6a04-4aa6-b284-1697c0fd6562)
 for instructions and the project rubric.
 
-#### Compilation  
+**Compilation**  
 The code should compile.  
 
-#### Implementation  
+**Implementation**  
 It's encouraged to be creative, particularly around hyperparameter tuning/optimization. However, the base algorithm should follow what's presented in the lessons.  
 
-#### Reflection  
+**Reflection**  
 Student describes the effect of the P, I, D component of the PID algorithm in their implementation. Is it what you expected?  
 
 Visual aids are encouraged, i.e. record of a small video of the car in the simulator and describe what each component is set to.  
 
 Student discusses how they chose the final hyperparameters (P, I, D coefficients). This could be have been done through manual tuning, twiddle, SGD, or something else, or a combination!  
 
-#### Simulation   
+**Simulation**  
 No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
 
 
