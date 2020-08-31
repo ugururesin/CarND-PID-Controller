@@ -117,7 +117,7 @@ See the full video: [./videos/pd_ideal.mov](./videos/pd_ideal.mov).
 
 3. **PID-controller** is tried with some p-i-d parameters.
 Since there were no systematic bias in the ego vehicle, there were no difference between PD and PID controllers for small integral values.  
-However, **higher integral values** cause that steering angles began to change very rapidly, causing the vehicle to lose control!!!
+However, **higher integral values** cause that steering angles began to change very rapidly, causing the vehicle to lose control!!!  
 ![](img/high_integral.gif)  
 (4 times faster!)
 
