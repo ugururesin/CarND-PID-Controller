@@ -157,6 +157,3 @@ Enthusiasts can get better results by trying these two suggestions.
 ### References  
 Udacity's Q&A Session: https://www.youtube.com/watch?v=YamBuzDjrs8
 https://en.wikipedia.org/wiki/PID_controller
-
-
-
